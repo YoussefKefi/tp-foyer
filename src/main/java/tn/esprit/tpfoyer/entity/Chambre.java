@@ -1,6 +1,9 @@
 package tn.esprit.tpfoyer.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.ToString;
+
 import java.util.Date;
 import java.util.Set;
 
@@ -18,7 +21,11 @@ public class Chambre {
     private Bloc bloc;
 
     @OneToMany(cascade = CascadeType.ALL)
+    @ToString.Exclude
+    @JsonIgnore
     private Set<Reservation> reservations;
+
+
 
     // Default constructor
     public Chambre() {

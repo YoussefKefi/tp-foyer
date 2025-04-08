@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Foyer;
 import tn.esprit.tpfoyer.service.IFoyerService;
@@ -11,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/foyer")
 public class FoyerRestController {
-
+    @Autowired
     IFoyerService foyerService;
 
     @GetMapping("/retrieve-all-foyers")

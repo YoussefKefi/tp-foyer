@@ -1,17 +1,20 @@
 package tn.esprit.tpfoyer.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Etudiant;
 import tn.esprit.tpfoyer.service.IEtudiantService;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
 @AllArgsConstructor
 @RequestMapping("/etudiant")
 public class EtudiantRestController {
-
+    @Autowired
     IEtudiantService etudiantService;
 
     @GetMapping("/retrieve-all-etudiants")
@@ -39,5 +42,10 @@ public class EtudiantRestController {
         return etudiantService.modifyEtudiant(e);
     }
 
+    @GetMapping("/find-etudiants-by-ecole-and-date-naissance/{nomE}/{datenai}")
+    public List<Etudiant> findEtudiantsByEcoleAndDateNaissanceGreaterThan(@PathVariable("nomE") String nomE,
+                                                                          @PathVariable @DateTimeFormat(fallbackPatterns = "yyyy-MM-dd") Date datenai) {
+        return etudiantService.findEtudiantsByEcoleAndDateNaissanceGreaterThan(nomE, datenai);
+    }
 
 }

@@ -1,6 +1,7 @@
 package tn.esprit.tpfoyer.controller;
 
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.tpfoyer.entity.Universite;
 import tn.esprit.tpfoyer.service.IUniversiteService;
@@ -11,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @RequestMapping("/universite")
 public class UniversiteRestController {
-
+    @Autowired
     IUniversiteService universiteService;
 
     @GetMapping("/retrieve-all-universites")
